@@ -11,6 +11,8 @@ class Teacher(models.Model):
     surname = models.TextField()
     subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
 
+    def __str__(self) -> str:
+        return f"{self.name} {self.surname}"
 
 class Class(models.Model):
     num_class = models.CharField(max_length=10)
@@ -18,6 +20,9 @@ class Class(models.Model):
 
 class Student(models.Model):
     full_name = models.ForeignKey(Class, on_delete=models.DO_NOTHING)
+
+    def __str__(self) -> str:
+        return f"{self.full_name}"
 
 
 class Schedule(models.Model):
